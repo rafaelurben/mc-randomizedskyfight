@@ -1,0 +1,20 @@
+{
+  "type": "generic",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+            "type": "minecraft:item",
+            "name": "minecraft:bee_spawn_egg",
+            "functions": [
+            {
+                "function": "minecraft:set_nbt",
+                "tag": "{display:{Name:'[{\"text\":\"--\",\"color\":\"gold\",\"bold\":true,\"obfuscated\":true},{\"text\":\" Lucky Block \",\"color\":\"gold\",\"bold\":true,\"obfuscated\":false},{\"text\":\"--\",\"bold\":true,\"obfuscated\":true}]',Lore:['{\"text\":\"Niemand weiss, was drin ist...\"}','{\"text\":\"Na komm schon, du willst es wissen!\"}']},EntityTag:{id:\"minecraft:armor_stand\",NoGravity:1b,Glowing:0b,Invisible:1b,PersistenceRequired:1b,Marker:1b,Tags:[\"LuckyBlock\"]}}"
+            }
+            ]
+        }
+        ]
+      }
+  ]
+}

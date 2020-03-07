@@ -1,0 +1,19 @@
+setblock 0 81 0 minecraft:redstone_block
+setblock 0 31 0 minecraft:redstone_block
+
+setblock -80 33 -80 minecraft:redstone_block
+setblock -80 33 80 minecraft:redstone_block
+setblock 80 33 80 minecraft:redstone_block
+setblock 80 33 -80 minecraft:redstone_block
+setblock -40 33 -80 minecraft:redstone_block
+setblock -40 33 80 minecraft:redstone_block
+setblock -80 33 -40 minecraft:redstone_block
+setblock 80 33 -40 minecraft:redstone_block
+setblock 0 33 -80 minecraft:redstone_block
+setblock 0 33 80 minecraft:redstone_block
+setblock -80 33 0 minecraft:redstone_block
+setblock 80 33 0 minecraft:redstone_block
+setblock 40 33 -80 minecraft:redstone_block
+setblock 40 33 80 minecraft:redstone_block
+setblock -80 33 40 minecraft:redstone_block
+setblock 80 33 40 minecraft:redstone_block

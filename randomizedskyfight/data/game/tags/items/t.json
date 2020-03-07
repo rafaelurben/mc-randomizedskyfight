@@ -1,0 +1,24 @@
+{
+  "values": [
+    "minecraft:tall_grass",
+    "minecraft:terracotta",
+    "minecraft:tipped_arrow",
+    "minecraft:tnt",
+    "minecraft:tnt_minecart",
+    "minecraft:torch",
+    "minecraft:totem_of_undying",
+    "minecraft:trader_llama_spawn_egg",
+    "minecraft:trapped_chest",
+    "minecraft:trident",
+    "minecraft:tripwire_hook",
+    "minecraft:tropical_fish",
+    "minecraft:tropical_fish_bucket",
+    "minecraft:tropical_fish_spawn_egg",
+    "minecraft:tube_coral",
+    "minecraft:tube_coral_block",
+    "minecraft:tube_coral_fan",
+    "minecraft:turtle_egg",
+    "minecraft:turtle_helmet",
+    "minecraft:turtle_spawn_egg"
+  ]
+}

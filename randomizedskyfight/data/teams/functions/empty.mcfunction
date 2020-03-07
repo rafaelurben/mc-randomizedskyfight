@@ -1,0 +1,16 @@
+team empty 1
+team empty 2
+team empty 3
+team empty 4
+team empty 5
+team empty 6
+team empty 7
+team empty 8
+team empty 9
+team empty 10
+team empty 11
+team empty 12
+team empty 13
+team empty 14
+team empty 15
+team empty 16
