@@ -1,0 +1,280 @@
+{
+  "pools": [
+    {
+      "entries": [
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Swiftness\\\"\"},CustomPotionEffects:[{Id:1,Amplifier:5,Duration:200}]}"
+            }
+          ],
+          "name": "minecraft:potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Haste\\\"\"},CustomPotionEffects:[{Id:3,Amplifier:10,Duration:6000}]}"
+            }
+          ],
+          "name": "minecraft:potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Strength\\\"\"},CustomPotionEffects:[{Id:5,Amplifier:20,Duration:600}]}"
+            }
+          ],
+          "name": "minecraft:potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Healing\\\"\"},CustomPotionEffects:[{Id:6,Amplifier:5,Duration:20}]}"
+            }
+          ],
+          "name": "minecraft:potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Leaping\\\"\"},CustomPotionEffects:[{Id:8,Amplifier:5,Duration:3000}]}"
+            }
+          ],
+          "name": "minecraft:potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Regeneration\\\"\"},CustomPotionEffects:[{Id:10,Amplifier:90,Duration:100}]}"
+            }
+          ],
+          "name": "minecraft:potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Resistance\\\"\"},CustomPotionEffects:[{Id:11,Amplifier:10,Duration:400}]}"
+            }
+          ],
+          "name": "minecraft:potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Fire resistance\\\"\"},CustomPotionEffects:[{Id:12,Amplifier:1,Duration:2400}]}"
+            }
+          ],
+          "name": "minecraft:potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Water breathing\\\"\"},CustomPotionEffects:[{Id:13,Amplifier:1,Duration:2400}]}"
+            }
+          ],
+          "name": "minecraft:potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Invisibility\\\"\"},CustomPotionEffects:[{Id:14,Amplifier:10,Duration:300}]}"
+            }
+          ],
+          "name": "minecraft:potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Health_boost\\\"\"},CustomPotionEffects:[{Id:21,Amplifier:5,Duration:200}]}"
+            }
+          ],
+          "name": "minecraft:potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Absorption\\\"\"},CustomPotionEffects:[{Id:22,Amplifier:5,Duration:300}]}"
+            }
+          ],
+          "name": "minecraft:potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Saturation\\\"\"},CustomPotionEffects:[{Id:23,Amplifier:10,Duration:600}]}"
+            }
+          ],
+          "name": "minecraft:potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Luck\\\"\"},CustomPotionEffects:[{Id:26,Amplifier:5,Duration:1200}]}"
+            }
+          ],
+          "name": "minecraft:potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Slowness\\\"\"},CustomPotionEffects:[{Id:2,Amplifier:10,Duration:300}]}"
+            }
+          ],
+          "name": "minecraft:splash_potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Mining fatigue\\\"\"},CustomPotionEffects:[{Id:4,Amplifier:10,Duration:1200}]}"
+            }
+          ],
+          "name": "minecraft:splash_potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Harming\\\"\"},CustomPotionEffects:[{Id:7,Amplifier:5,Duration:20}]}"
+            }
+          ],
+          "name": "minecraft:splash_potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Nausea\\\"\"},CustomPotionEffects:[{Id:9,Amplifier:10,Duration:100}]}"
+            }
+          ],
+          "name": "minecraft:splash_potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Blindness\\\"\"},CustomPotionEffects:[{Id:15,Amplifier:5,Duration:100}]}"
+            }
+          ],
+          "name": "minecraft:splash_potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Night vision\\\"\"},CustomPotionEffects:[{Id:16,Amplifier:90,Duration:3600}]}"
+            }
+          ],
+          "name": "minecraft:splash_potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Hunger\\\"\"},CustomPotionEffects:[{Id:17,Amplifier:5,Duration:100}]}"
+            }
+          ],
+          "name": "minecraft:splash_potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Weakness\\\"\"},CustomPotionEffects:[{Id:18,Amplifier:5,Duration:200}]}"
+            }
+          ],
+          "name": "minecraft:splash_potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Poison\\\"\"},CustomPotionEffects:[{Id:19,Amplifier:3,Duration:100}]}"
+            }
+          ],
+          "name": "minecraft:splash_potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Wither\\\"\"},CustomPotionEffects:[{Id:20,Amplifier:5,Duration:200}]}"
+            }
+          ],
+          "name": "minecraft:splash_potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Glowing\\\"\"},CustomPotionEffects:[{Id:24,Amplifier:50,Duration:600}]}"
+            }
+          ],
+          "name": "minecraft:splash_potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Levitation\\\"\"},CustomPotionEffects:[{Id:25,Amplifier:5,Duration:100}]}"
+            }
+          ],
+          "name": "minecraft:splash_potion",
+          "type": "minecraft:item"
+        },
+        {
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:water\",display:{Name:\"\\\"Bad luck\\\"\"},CustomPotionEffects:[{Id:27,Amplifier:5,Duration:1200}]}"
+            }
+          ],
+          "name": "minecraft:splash_potion",
+          "type": "minecraft:item"
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "type": "generic"
+}

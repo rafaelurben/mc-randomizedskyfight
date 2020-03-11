@@ -24,3 +24,7 @@ scoreboard players set #playerswitch game 1
 
 # Leben
 scoreboard players set #lifes game 3
+
+
+# Specialmode
+scoreboard players set #specialmode game 0

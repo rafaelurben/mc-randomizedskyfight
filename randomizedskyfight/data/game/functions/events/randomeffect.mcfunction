@@ -41,3 +41,5 @@ execute if score #randomeffect game matches 32 run effect give @s minecraft:with
 # 2. Danach nur noch hinten Effekt Zeit und Stärke anpassen (true steht dafür, damit keine Partikel erscheinen)
 # 3. In der Datei data/game/loot_tables/randomeffect Zahl bei "max" abändern
 ###################################
+
+tellraw @s [{"text":"Effekt!","color":"gold"}]

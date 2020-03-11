@@ -14,7 +14,7 @@ bossbar set game:nexrandomitem visible true
 # execute store result bossbar game:nexrandomstructure max run scoreboard players get #structureevent game
 # bossbar set game:nexrandomstructure visible true
 
-#Scoreboard
+# Scoreboard
 scoreboard objectives remove gamesettings
 scoreboard objectives add gamesettings trigger
 
@@ -31,8 +31,12 @@ scoreboard players set #playerswitchtimer game -1
 scoreboard players reset @a[tag=player] death
 
 
-#Players
+# Players
 clear @a[tag=player,team=!]
 effect clear @a[tag=player,team=!]
 effect give @a[tag=player,team=!] minecraft:regeneration 10 5 true
 effect give @a[tag=player,team=!] minecraft:saturation 10 5 true
+
+# Gamerules
+execute if score #specialmode game matches 1 run gamerule naturalRegeneration false
+execute unless score #specialmode game matches 1 run gamerule naturalRegeneration true

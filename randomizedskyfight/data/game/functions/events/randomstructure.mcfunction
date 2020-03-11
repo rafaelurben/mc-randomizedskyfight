@@ -1,10 +1,10 @@
 function game:random
 tag @s remove active
-tag @s add activatedspawner
+
 
 #########################################
 
-
+summon minecraft:armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,PersistenceRequired:1b,NoGravity:1b,Tags:["structurepos"]}
 
 
 
@@ -450,5 +450,5 @@ execute if score #randomstructure game matches 433 at @s run setblock ~ ~-2 ~ mi
 # 3. In der Datei data/game/loot_tables/randomspawn Zahl bei "max" abändern
 ########################################
 
-schedule function game:events/randomstructureset 1t
-schedule function game:events/randomstructureclear 2t
+execute as @e[tag=structurepos,distance=..2] at @s run schedule function game:events/randomstructureset 1t
+execute as @e[tag=structurepos,distance=..2] at @s run schedule function game:events/randomstructureclear 2t

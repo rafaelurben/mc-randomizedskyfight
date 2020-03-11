@@ -19,12 +19,14 @@ execute if score #game game matches 300.. if score #itemtimer game matches ..0 i
 #execute if score #game game matches 300.. if score #itemtimer game matches 4.. if score #item game matches 1 run scoreboard players operation §eItem game = #itemtimer game
 execute if score #game game matches 300.. store result bossbar game:nexrandomitem value if score #item game matches 1 run scoreboard players get #itemtimer game
 
+
 execute if score #game game matches 300.. if score #effecttimer game matches 1.. if score #effect game matches 1 run scoreboard players remove #effecttimer game 1
 execute if score #game game matches 300.. if score #effecttimer game matches 0 if score #effect game matches 1 as @r[tag=player,team=!,gamemode=survival] run function game:events/randomeffect
 execute if score #game game matches 300.. if score #effecttimer game matches ..0 if score #effect game matches 1 run scoreboard players operation #effecttimer game = #effectevent game
 
 execute if score #game game matches 300.. if score #effecttimer game > #lifes game if score #effect game matches 1 run scoreboard players operation §eEffect game = #effecttimer game
 # execute if score #game game matches 300.. store result bossbar game:nexrandomeffect value if score #effect game matches 1 run scoreboard players get #effecttimer game
+
 
 execute if score #game game matches 300.. if score #spawntimer game matches 1.. if score #spawn game matches 1 run scoreboard players remove #spawntimer game 1
 execute if score #game game matches 300.. if score #spawntimer game matches 0 if score #spawn game matches 1 as @e[tag=spawner,limit=1,sort=random] run function game:events/randomspawn
@@ -33,12 +35,14 @@ execute if score #game game matches 300.. if score #spawntimer game matches ..0 
 execute if score #game game matches 300.. if score #spawntimer game > #lifes game if score #spawn game matches 1 run scoreboard players operation §eSpawn game = #spawntimer game
 # execute if score #game game matches 300.. store result bossbar game:nexrandomspawn value if score #spawn game matches 1 run scoreboard players get #spawntimer game
 
+
 execute if score #game game matches 300.. if score #structuretimer game matches 1.. if score #structure game matches 1 run scoreboard players remove #structuretimer game 1
 execute if score #game game matches 300.. if score #structuretimer game matches 0 if score #structure game matches 1 as @e[tag=structurespawner,tag=active,limit=1,sort=random] run function game:events/randomstructure
 execute if score #game game matches 300.. if score #structuretimer game matches ..0 if score #structure game matches 1 run scoreboard players operation #structuretimer game = #structureevent game
 
 execute if score #game game matches 300.. if score #structuretimer game > #lifes game if score #structure game matches 1 run scoreboard players operation §eStructure game = #structuretimer game
 # execute if score #game game matches 300.. store result bossbar game:nexrandomstructure value if score #structure game matches 1 run scoreboard players get #structuretimer game
+
 
 execute if score #game game matches 300.. if score #playerswitchtimer game matches 1.. if score #playerswitch game matches 1 run scoreboard players remove #playerswitchtimer game 1
 execute if score #game game matches 300.. if score #playerswitchtimer game matches 0 if score #playerswitch game matches 1 as @r run function game:events/randomplayerswitch
@@ -56,10 +60,24 @@ execute if score #game game matches 300.. run gamemode spectator @a[tag=player,t
 execute if score #game game matches 300.. run gamemode survival @a[tag=player,team=!,gamemode=!survival,scores={game=1..}]
 execute unless score #game game matches 300.. run gamemode adventure @a[tag=player,gamemode=!adventure]
 
-#Settings
-execute as @a[scores={gamesettings=1..}] run playsound minecraft:block.note_block.bit master @s ~ ~ ~ 1 1.5
+#start
 execute if score #starttimer game matches 198 as @a[tag=player] run playsound minecraft:music_disc.mellohi master @s ~ ~ ~ 1
 execute unless score #starttimer game matches 1.. run stopsound @a * minecraft:music_disc.mellohi
+execute unless score #game game matches 1.. if score #starttimer game matches 0 run function game:start
+execute unless score #game game matches 1.. if score #starttimer game matches 0.. run scoreboard players remove #starttimer game 1
+
+#Settings
+execute as @a[scores={gamesettings=1..}] at @s run playsound minecraft:block.note_block.bit master @s ~ ~ ~ 1 1.5
+
+execute as @a[scores={gamesettings=10}] run tellraw @s ["",{"text":"Ersteller des "},{"text":"Randomized Skyfight","color":"aqua"},{"text":": "},{"text":"Rafael Urben (Entwicklung)","color":"green","clickEvent":{"action":"open_url","value":"https://fiverr.com/rafaelurben"},"hoverEvent":{"action":"show_text","value":"https://fiverr.com/rafaelurben"}}]
+execute as @a[scores={gamesettings=11}] run tellraw @s ["",{"text":"Ersteller des "},{"text":"Randomized Skyfight","color":"aqua"},{"text":": "},{"text":"MinimisPinguin (Idee)","color":"green","clickEvent":{"action":"open_url","value":"https://twitter.com/minimispinguin"},"hoverEvent":{"action":"show_text","value":"https://twitter.com/minimispinguin"}}]
+
+execute unless score #game game matches 1.. if entity @a[scores={gamesettings=80}] if score #specialmode game matches 2 run scoreboard players set #specialmode game 0
+execute unless score #game game matches 1.. if entity @a[scores={gamesettings=80}] if score #specialmode game matches 1 run scoreboard players set #specialmode game 2
+execute unless score #game game matches 1.. if entity @a[scores={gamesettings=81}] if score #specialmode game matches 0 run scoreboard players set #specialmode game 1
+
+execute unless score #game game matches 1.. if entity @a[scores={gamesettings=90}] if score #starttimer game matches 0.. run scoreboard players reset #starttimer game
+execute unless score #game game matches 1.. if entity @a[scores={gamesettings=91}] unless score #starttimer game matches 0.. run scoreboard players set #starttimer game 200
 
 execute unless score #game game matches 1.. if entity @a[scores={gamesettings=100}] if score #gamemode jointeam matches 5 run scoreboard players set #gamemode jointeam 0
 execute unless score #game game matches 1.. if entity @a[scores={gamesettings=100}] if score #gamemode jointeam matches 4 run scoreboard players set #gamemode jointeam 5
@@ -98,43 +116,39 @@ execute unless score #game game matches 1.. if entity @a[scores={gamesettings=15
 execute unless score #game game matches 1.. if entity @a[scores={gamesettings=151}] if score #playerswitch game matches 0 run scoreboard players set #playerswitchevent game 2000
 execute unless score #game game matches 1.. if entity @a[scores={gamesettings=151}] if score #playerswitch game matches 0 run scoreboard players set #playerswitch game 1
 
-execute unless score #game game matches 1.. if entity @a[scores={gamesettings=160}] if score #starttimer game matches 0.. run scoreboard players reset #starttimer game
-execute unless score #game game matches 1.. if entity @a[scores={gamesettings=161}] unless score #starttimer game matches 0.. run scoreboard players set #starttimer game 200
-execute unless score #game game matches 1.. if score #starttimer game matches 0 run function game:start
-execute unless score #game game matches 1.. if score #starttimer game matches 0.. run scoreboard players remove #starttimer game 1
+execute unless score #game game matches 1.. if entity @a[scores={gamesettings=160}] if score #lifes game matches 5 run scoreboard players set #lifes game 6
+execute unless score #game game matches 1.. if entity @a[scores={gamesettings=160}] if score #lifes game matches 4 run scoreboard players set #lifes game 5
+execute unless score #game game matches 1.. if entity @a[scores={gamesettings=160}] if score #lifes game matches 3 run scoreboard players set #lifes game 4
+execute unless score #game game matches 1.. if entity @a[scores={gamesettings=160}] if score #lifes game matches 2 run scoreboard players set #lifes game 3
+execute unless score #game game matches 1.. if entity @a[scores={gamesettings=160}] if score #lifes game matches 1 run scoreboard players set #lifes game 2
+execute unless score #game game matches 1.. if entity @a[scores={gamesettings=161}] if score #lifes game matches 6 run scoreboard players set #lifes game 1
 
-execute unless score #game game matches 1.. if entity @a[scores={gamesettings=170}] if score #lifes game matches 5 run scoreboard players set #lifes game 6
-execute unless score #game game matches 1.. if entity @a[scores={gamesettings=170}] if score #lifes game matches 4 run scoreboard players set #lifes game 5
-execute unless score #game game matches 1.. if entity @a[scores={gamesettings=170}] if score #lifes game matches 3 run scoreboard players set #lifes game 4
-execute unless score #game game matches 1.. if entity @a[scores={gamesettings=170}] if score #lifes game matches 2 run scoreboard players set #lifes game 3
-execute unless score #game game matches 1.. if entity @a[scores={gamesettings=170}] if score #lifes game matches 1 run scoreboard players set #lifes game 2
-execute unless score #game game matches 1.. if entity @a[scores={gamesettings=171}] if score #lifes game matches 6 run scoreboard players set #lifes game 1
-
-execute as @a[scores={gamesettings=10}] run tellraw @s ["",{"text":"Ersteller des "},{"text":"Randomized Skyfight","color":"aqua"},{"text":": "},{"text":"Rafael Urben (Entwicklung)","color":"green","clickEvent":{"action":"open_url","value":"https://fiverr.com/rafaelurben"},"hoverEvent":{"action":"show_text","value":"https://fiverr.com/rafaelurben"}}]
-execute as @a[scores={gamesettings=11}] run tellraw @s ["",{"text":"Ersteller des "},{"text":"Randomized Skyfight","color":"aqua"},{"text":": "},{"text":"MinimisPinguin (Idee)","color":"green","clickEvent":{"action":"open_url","value":"https://twitter.com/minimispinguin"},"hoverEvent":{"action":"show_text","value":"https://twitter.com/minimispinguin"}}]
-
-scoreboard players set @a[scores={gamesettings=0..}] gamesettings -1000
+scoreboard players reset @a[scores={gamesettings=0..}] gamesettings
 execute unless score #game game matches 1.. run scoreboard players enable @a[tag=player] gamesettings
 
-fill -4 89 1 -4 91 -1 minecraft:air
 fill 4 89 1 4 91 -1 minecraft:air
-execute unless score #game game matches 1.. if score #gamemode jointeam matches 1.. run setblock 4 90 0 oak_wall_sign[facing=west]{Text1:'[{"text":"Teamzuteilung","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Automatisch","color":"green","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 100"}}]',Text4:'[{"score":{"name":"#gamemode","objective":"jointeam"},"bold":true,"color":"aqua"},{"text":" Sp./Team","color":"aqua","bold":false}]'}
-execute unless score #game game matches 1.. if score #item game matches 1 run setblock -4 90 0 oak_wall_sign[facing=east]{Text1:'[{"text":"Items","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Aktiviert","color":"green","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 110"}}]',Text4:'[{"score":{"name":"#itemevent","objective":"game"},"bold":true,"color":"aqua"},{"text":" ms","color":"aqua"}]'}
-execute unless score #game game matches 1.. if score #effect game matches 1 run setblock -4 89 0 oak_wall_sign[facing=east]{Text1:'[{"text":"Effekte","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Aktiviert","color":"green","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 120"}}]',Text4:'[{"score":{"name":"#effectevent","objective":"game"},"bold":true,"color":"aqua"},{"text":" ms","color":"aqua"}]'}
-execute unless score #game game matches 1.. if score #spawn game matches 1 run setblock -4 91 0 oak_wall_sign[facing=east]{Text1:'[{"text":"Mobs","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Aktiviert","color":"green","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 130"}}]',Text4:'[{"score":{"name":"#spawnevent","objective":"game"},"bold":true,"color":"aqua"},{"text":" ms","color":"aqua"}]'}
-execute unless score #game game matches 1.. if score #structure game matches 1 run setblock -4 90 -1 oak_wall_sign[facing=east]{Text1:'[{"text":"Strukturen","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Aktiviert","color":"green","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 140"}}]',Text4:'[{"score":{"name":"#structureevent","objective":"game"},"bold":true,"color":"aqua"},{"text":" ms","color":"aqua"}]'}
-execute unless score #game game matches 1.. if score #playerswitch game matches 1 run setblock -4 90 1 oak_wall_sign[facing=east]{Text1:'[{"text":"Playerswitch","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Aktiviert","color":"green","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 150"}}]',Text4:'[{"score":{"name":"#playerswitchevent","objective":"game"},"bold":true,"color":"aqua"},{"text":" ms","color":"aqua"}]'}
-execute unless score #game game matches 1.. if score #starttimer game matches 0.. run setblock 4 89 0 oak_wall_sign[facing=west]{Text1:'[{"text":"Spiel starten","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Wird gestartet...","color":"dark_blue","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 160"}}]',Text4:'[{"text":"Noch ","color":"aqua","bold":false},{"score":{"name":"#starttimer","objective":"game"},"bold":true,"color":"aqua"},{"text":" Ticks","color":"aqua","bold":false}]'}
-execute unless score #game game matches 1.. if score #lifes game matches 1..5 run setblock 4 91 0 oak_wall_sign[facing=west]{Text1:'[{"text":"Leben","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Anzahl","color":"dark_blue","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 170"}}]',Text4:'[{"score":{"name":"#lifes","objective":"game"},"bold":true,"color":"aqua"},{"text":" Leben","color":"aqua","bold":false}]'}
+execute unless score #game game matches 1.. if score #specialmode game matches 2 run setblock 4 89 0 oak_wall_sign[facing=west]{Text1:'[{"text":"Spezialmodus","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Aktiviert","color":"green","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 80"}}]',Text4:'[{"text":"OP","color":"aqua","bold":false}]'}
+execute unless score #game game matches 1.. if score #specialmode game matches 1 run setblock 4 89 0 oak_wall_sign[facing=west]{Text1:'[{"text":"Spezialmodus","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Aktiviert","color":"green","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 80"}}]',Text4:'[{"text":"Hardcore","color":"aqua","bold":false}]'}
+execute unless score #game game matches 1.. if score #specialmode game matches 0 run setblock 4 89 0 oak_wall_sign[facing=west]{Text1:'[{"text":"Spezialmodus","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Deaktiviert","color":"red","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 81"}}]',Text4:'[{"text":"Normal","color":"aqua","bold":false}]'}
+execute unless score #game game matches 1.. if score #starttimer game matches 0.. run setblock 4 90 0 oak_wall_sign[facing=west]{Text1:'[{"text":"Spiel starten","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Wird gestartet...","color":"dark_blue","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 90"}}]',Text4:'[{"text":"Noch ","color":"aqua","bold":false},{"score":{"name":"#starttimer","objective":"game"},"bold":true,"color":"aqua"},{"text":" Ticks","color":"aqua","bold":false}]'}
+execute unless score #game game matches 1.. unless score #starttimer game matches 0.. run setblock 4 90 0 oak_wall_sign[facing=west]{Text1:'[{"text":"Spiel starten","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Spiel starten","color":"dark_blue","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 91"}}]'}
+execute unless score #game game matches 1.. if score #gamemode jointeam matches 1.. run setblock 4 91 0 oak_wall_sign[facing=west]{Text1:'[{"text":"Teamzuteilung","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Automatisch","color":"green","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 100"}}]',Text4:'[{"score":{"name":"#gamemode","objective":"jointeam"},"bold":true,"color":"aqua"},{"text":" Sp./Team","color":"aqua","bold":false}]'}
+execute unless score #game game matches 1.. if score #gamemode jointeam matches 0 run setblock 4 91 0 oak_wall_sign[facing=west]{Text1:'[{"text":"Teamzuteilung","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Manuell","color":"red","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 101"}}]',Text4:'[{"text":"Max ","color":"aqua"},{"score":{"name":"#maxPlayers","objective":"jointeam"},"bold":true,"color":"aqua"},{"text":" Sp./Team","color":"aqua","bold":false}]'}
 
-execute unless score #game game matches 1.. if score #gamemode jointeam matches 0 run setblock 4 90 0 oak_wall_sign[facing=west]{Text1:'[{"text":"Teamzuteilung","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Manuell","color":"red","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 101"}}]',Text4:'[{"text":"Max ","color":"aqua"},{"score":{"name":"#maxPlayers","objective":"jointeam"},"bold":true,"color":"aqua"},{"text":" Sp./Team","color":"aqua","bold":false}]'}
-execute unless score #game game matches 1.. if score #item game matches 0 run setblock -4 90 0 oak_wall_sign[facing=east]{Text1:'[{"text":"Items","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Deaktiviert","color":"red","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 111"}}]'}
+fill -4 89 1 -4 91 -1 minecraft:air
+execute unless score #game game matches 1.. if score #item game matches 1 run setblock -4 89 -1 oak_wall_sign[facing=east]{Text1:'[{"text":"Items","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Aktiviert","color":"green","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 110"}}]',Text4:'[{"score":{"name":"#itemevent","objective":"game"},"bold":true,"color":"aqua"},{"text":" ms","color":"aqua"}]'}
+execute unless score #game game matches 1.. if score #item game matches 0 run setblock -4 89 -1 oak_wall_sign[facing=east]{Text1:'[{"text":"Items","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Deaktiviert","color":"red","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 111"}}]'}
+execute unless score #game game matches 1.. if score #effect game matches 1 run setblock -4 89 0 oak_wall_sign[facing=east]{Text1:'[{"text":"Effekte","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Aktiviert","color":"green","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 120"}}]',Text4:'[{"score":{"name":"#effectevent","objective":"game"},"bold":true,"color":"aqua"},{"text":" ms","color":"aqua"}]'}
 execute unless score #game game matches 1.. if score #effect game matches 0 run setblock -4 89 0 oak_wall_sign[facing=east]{Text1:'[{"text":"Effekte","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Deaktiviert","color":"red","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 121"}}]'}
-execute unless score #game game matches 1.. if score #spawn game matches 0 run setblock -4 91 0 oak_wall_sign[facing=east]{Text1:'[{"text":"Mobs","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Deaktiviert","color":"red","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 131"}}]'}
+execute unless score #game game matches 1.. if score #spawn game matches 1 run setblock -4 89 1 oak_wall_sign[facing=east]{Text1:'[{"text":"Mobs","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Aktiviert","color":"green","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 130"}}]',Text4:'[{"score":{"name":"#spawnevent","objective":"game"},"bold":true,"color":"aqua"},{"text":" ms","color":"aqua"}]'}
+execute unless score #game game matches 1.. if score #spawn game matches 0 run setblock -4 89 1 oak_wall_sign[facing=east]{Text1:'[{"text":"Mobs","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Deaktiviert","color":"red","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 131"}}]'}
+execute unless score #game game matches 1.. if score #structure game matches 1 run setblock -4 90 -1 oak_wall_sign[facing=east]{Text1:'[{"text":"Strukturen","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Aktiviert","color":"green","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 140"}}]',Text4:'[{"score":{"name":"#structureevent","objective":"game"},"bold":true,"color":"aqua"},{"text":" ms","color":"aqua"}]'}
 execute unless score #game game matches 1.. if score #structure game matches 0 run setblock -4 90 -1 oak_wall_sign[facing=east]{Text1:'[{"text":"Strukturen","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Deaktiviert","color":"red","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 141"}}]'}
-execute unless score #game game matches 1.. if score #playerswitch game matches 0 run setblock -4 90 1 oak_wall_sign[facing=east]{Text1:'[{"text":"Playerswitch","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Deaktiviert","color":"red","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 151"}}]'}
-execute unless score #game game matches 1.. unless score #starttimer game matches 0.. run setblock 4 89 0 oak_wall_sign[facing=west]{Text1:'[{"text":"Start","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Spiel starten","color":"dark_blue","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 161"}}]'}
-execute unless score #game game matches 1.. if score #lifes game matches 6 run setblock 4 91 0 oak_wall_sign[facing=west]{Text1:'[{"text":"Leben","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Anzahl","color":"dark_blue","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 171"}}]',Text4:'[{"score":{"name":"#lifes","objective":"game"},"bold":true,"color":"aqua"},{"text":" Leben","color":"aqua","bold":false}]'}
+execute unless score #game game matches 1.. if score #playerswitch game matches 1 run setblock -4 90 0 oak_wall_sign[facing=east]{Text1:'[{"text":"Playerswitch","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Aktiviert","color":"green","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 150"}}]',Text4:'[{"score":{"name":"#playerswitchevent","objective":"game"},"bold":true,"color":"aqua"},{"text":" ms","color":"aqua"}]'}
+execute unless score #game game matches 1.. if score #playerswitch game matches 0 run setblock -4 90 0 oak_wall_sign[facing=east]{Text1:'[{"text":"Playerswitch","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Deaktiviert","color":"red","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 151"}}]'}
+execute unless score #game game matches 1.. if score #lifes game matches 1..5 run setblock -4 90 1 oak_wall_sign[facing=east]{Text1:'[{"text":"Leben","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Anzahl","color":"green","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 160"}}]',Text4:'[{"score":{"name":"#lifes","objective":"game"},"bold":true,"color":"aqua"},{"text":" Leben","color":"aqua","bold":false}]'}
+execute unless score #game game matches 1.. if score #lifes game matches 6 run setblock -4 90 1 oak_wall_sign[facing=east]{Text1:'[{"text":"Leben","color":"gold"}]',Text2:'[{"text":"==========="}]',Text3:'[{"text":"Anzahl","color":"green","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 161"}}]',Text4:'[{"score":{"name":"#lifes","objective":"game"},"bold":true,"color":"aqua"},{"text":" Leben","color":"aqua","bold":false}]'}
+
 
 
 
@@ -175,32 +189,26 @@ execute if score #game game matches 1.. run tag @a[tag=jointeam] remove jointeam
 tag @a[tag=jointeam,tag=builder] remove jointeam
 
 #Ende
-execute if score #game game matches 1.. if entity @a[tag=player,team=1,scores={game=1..}] unless entity @a[tag=player,team=!1,scores={game=1..}] run tag @a add end
-execute if score #game game matches 1.. if entity @a[tag=player,team=2,scores={game=1..}] unless entity @a[tag=player,team=!2,scores={game=1..}] run tag @a add end
-execute if score #game game matches 1.. if entity @a[tag=player,team=3,scores={game=1..}] unless entity @a[tag=player,team=!3,scores={game=1..}] run tag @a add end
-execute if score #game game matches 1.. if entity @a[tag=player,team=4,scores={game=1..}] unless entity @a[tag=player,team=!4,scores={game=1..}] run tag @a add end
-execute if score #game game matches 1.. if entity @a[tag=player,team=5,scores={game=1..}] unless entity @a[tag=player,team=!5,scores={game=1..}] run tag @a add end
-execute if score #game game matches 1.. if entity @a[tag=player,team=6,scores={game=1..}] unless entity @a[tag=player,team=!6,scores={game=1..}] run tag @a add end
-execute if score #game game matches 1.. if entity @a[tag=player,team=7,scores={game=1..}] unless entity @a[tag=player,team=!7,scores={game=1..}] run tag @a add end
-execute if score #game game matches 1.. if entity @a[tag=player,team=8,scores={game=1..}] unless entity @a[tag=player,team=!8,scores={game=1..}] run tag @a add end
-execute if score #game game matches 1.. if entity @a[tag=player,team=9,scores={game=1..}] unless entity @a[tag=player,team=!9,scores={game=1..}] run tag @a add end
-execute if score #game game matches 1.. if entity @a[tag=player,team=10,scores={game=1..}] unless entity @a[tag=player,team=!10,scores={game=1..}] run tag @a add end
-execute if score #game game matches 1.. if entity @a[tag=player,team=11,scores={game=1..}] unless entity @a[tag=player,team=!11,scores={game=1..}] run tag @a add end
-execute if score #game game matches 1.. if entity @a[tag=player,team=12,scores={game=1..}] unless entity @a[tag=player,team=!12,scores={game=1..}] run tag @a add end
-execute if score #game game matches 1.. if entity @a[tag=player,team=13,scores={game=1..}] unless entity @a[tag=player,team=!13,scores={game=1..}] run tag @a add end
-execute if score #game game matches 1.. if entity @a[tag=player,team=14,scores={game=1..}] unless entity @a[tag=player,team=!14,scores={game=1..}] run tag @a add end
-execute if score #game game matches 1.. if entity @a[tag=player,team=15,scores={game=1..}] unless entity @a[tag=player,team=!15,scores={game=1..}] run tag @a add end
-execute if score #game game matches 1.. if entity @a[tag=player,team=16,scores={game=1..}] unless entity @a[tag=player,team=!16,scores={game=1..}] run tag @a add end
+execute if score #game game matches 1.. if entity @a[tag=player,team=1,scores={game=1..}] unless entity @a[tag=player,team=!1,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=2,scores={game=1..}] unless entity @a[tag=player,team=!2,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=3,scores={game=1..}] unless entity @a[tag=player,team=!3,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=4,scores={game=1..}] unless entity @a[tag=player,team=!4,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=5,scores={game=1..}] unless entity @a[tag=player,team=!5,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=6,scores={game=1..}] unless entity @a[tag=player,team=!6,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=7,scores={game=1..}] unless entity @a[tag=player,team=!7,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=8,scores={game=1..}] unless entity @a[tag=player,team=!8,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=9,scores={game=1..}] unless entity @a[tag=player,team=!9,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=10,scores={game=1..}] unless entity @a[tag=player,team=!10,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=11,scores={game=1..}] unless entity @a[tag=player,team=!11,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=12,scores={game=1..}] unless entity @a[tag=player,team=!12,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=13,scores={game=1..}] unless entity @a[tag=player,team=!13,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=14,scores={game=1..}] unless entity @a[tag=player,team=!14,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=15,scores={game=1..}] unless entity @a[tag=player,team=!15,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=16,scores={game=1..}] unless entity @a[tag=player,team=!16,scores={game=1..}] run scoreboard players set #end game 1
 
-execute if entity @a[tag=player,tag=end] run title @a times 10 100 10
-execute if entity @a[tag=player,tag=end] run title @a subtitle ["",{"text":"Überlebend: ","color":"green"},{"selector":"@a[tag=player,scores={game=1..}]"}]
-execute if entity @a[tag=player,tag=end] run title @a title ["",{"text":"Spiel Beendet","color":"red"}]
-execute if entity @a[tag=player,tag=end] run tellraw @a [""]
-execute if entity @a[tag=player,tag=end] run tellraw @a ["",{"text":"Spiel Beendet","color":"red"}]
-execute if entity @a[tag=player,tag=end] run tellraw @a [""]
-execute if entity @a[tag=player,tag=end] run tellraw @a ["",{"text":"Überlebende Spieler: ","color":"green"},{"selector":"@a[tag=player,scores={game=1..}]"}]
-execute if entity @a[tag=player,tag=end] run function game:stop
-execute if entity @a[tag=player,tag=end] run tag @a remove end
+execute if score #end game matches 1 run function game:stop
+
+
 
 #Reset
 execute if score #resettimer game matches 0.. run scoreboard players remove #resettimer game 1
@@ -220,4 +228,3 @@ execute if score #resettimer game matches 0 run function game:map/startreset
 
 #Luckyblock
 execute as @e[tag=LuckyBlock] at @s run function game:events/randomevent
-tag @e[tag=LuckyBlock] remove LuckyBlock

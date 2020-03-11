@@ -2,8 +2,8 @@ function game:random
 
 ################################
 
-summon minecraft:armor_stand 0 50 0 {Marker:1b,Invisible:1b,PersistenceRequired:1b,Tags:["spawnpos"]}
-spreadplayers 0 0 100 144 false @e[tag=spawnpos]
+summon minecraft:armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,PersistenceRequired:1b,Tags:["spawnpos"]}
+spreadplayers 0 0 25 25 false @e[tag=spawnpos]
 
 ################################
 

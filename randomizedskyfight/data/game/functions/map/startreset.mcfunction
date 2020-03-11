@@ -29,3 +29,6 @@ schedule function game:map/placestructureblocks 20t
 schedule function game:map/placeredstoneblocks 30t
 schedule function game:map/destroyblocks 40t
 schedule function game:map/endreset 60t
+
+
+scoreboard players set #starttimer game -1
