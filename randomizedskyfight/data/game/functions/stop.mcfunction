@@ -1,4 +1,4 @@
-execute as @a[tag=player,scores={game=1..}] run summon firework_rocket ~ ~3 ~ {LifeTime:0,FireworksItem:{id:firework_rocket,Count:1,tag:{Fireworks:{Flight:1,Explosions:[{Type:1,Flicker:1,Trail:1,Colors:[I;11743532,2437522,8073150,4312372,14602026,6719955,15435844]}]}}}}
+execute at @a[tag=player,scores={game=1..},team=!] run summon firework_rocket ~ ~3 ~ {Tags:["game"],LifeTime:0,FireworksItem:{id:firework_rocket,Count:1,tag:{Fireworks:{Flight:1,Explosions:[{Type:1,Flicker:1,Trail:1,Colors:[I;11743532,2437522,8073150,4312372,14602026,6719955,15435844]}]}}}}
 
 title @a times 10 100 10
 title @a subtitle ["",{"text":"Gewinner: ","color":"green"},{"selector":"@a[tag=player,scores={game=1..}]"}]

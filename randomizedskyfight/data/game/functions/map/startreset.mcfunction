@@ -7,6 +7,7 @@ worldborder set 320 0
 
 
 kill @e[type=!player,tag=!game]
+tag @e[tag=structurespawner] remove active
 
 
 tellraw @a ["",{"text":"Mapreset erfolgt ","color":"red"},{"text":"JETZT!","color":"dark_red"},{"text":" Dies könnte ziemliche Lags verursachen!","color":"red"}]
@@ -25,10 +26,10 @@ kill @e[type=!player,tag=!game]
 
 #Loading Map
 
-schedule function game:map/placestructureblocks 20t
-schedule function game:map/placeredstoneblocks 30t
-schedule function game:map/destroyblocks 40t
-schedule function game:map/endreset 60t
+schedule function game:map/placestructureblocks 2t
+schedule function game:map/placeredstoneblocks 4t
+schedule function game:map/destroyblocks 6t
+schedule function game:map/endreset 8t
 
 
 scoreboard players set #starttimer game -1

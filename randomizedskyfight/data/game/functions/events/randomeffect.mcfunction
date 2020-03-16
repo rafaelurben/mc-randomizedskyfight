@@ -2,6 +2,12 @@ function game:random
 
 ##################################
 
+
+
+
+
+
+
 execute if score #randomeffect game matches 1 run effect give @s minecraft:absorption 10 50 true
 execute if score #randomeffect game matches 2 run effect give @s minecraft:unluck 30 3 true
 execute if score #randomeffect game matches 3 run effect give @s minecraft:bad_omen 50 3 true
@@ -35,6 +41,9 @@ execute if score #randomeffect game matches 20 run effect give @s minecraft:wate
 execute if score #randomeffect game matches 31 run effect give @s minecraft:weakness 35 4 true
 execute if score #randomeffect game matches 32 run effect give @s minecraft:wither 5 2 true
 
+
+
+
 ###################################
 # NEUE Effekte hinzufügen:
 # 1. Ohen Zeile kopieren und die Zahl um 1 erhöhen (so, dass für jeden Zufallswert eine Effekt da ist) -
@@ -42,4 +51,4 @@ execute if score #randomeffect game matches 32 run effect give @s minecraft:with
 # 3. In der Datei data/game/loot_tables/randomeffect Zahl bei "max" abändern
 ###################################
 
-tellraw @s [{"text":"Effekt!","color":"gold"}]
+#tellraw @s [{"text":"Effekt!","color":"gold"}]

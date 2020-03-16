@@ -4,7 +4,7 @@ tag @s remove active
 
 #########################################
 
-summon minecraft:armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,PersistenceRequired:1b,NoGravity:1b,Tags:["structurepos"]}
+execute at @s run summon minecraft:armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,PersistenceRequired:1b,NoGravity:1b,Tags:["structurepos"]}
 
 
 
@@ -449,6 +449,3 @@ execute if score #randomstructure game matches 433 at @s run setblock ~ ~-2 ~ mi
 # 2. Strukturenname anpassen (Ordner: data/game/structures) und posX, posY und posZ so anpassen, dass die Mitte des Bodens der Struktur 2 Blöcke über dem Structureblock ist.
 # 3. In der Datei data/game/loot_tables/randomspawn Zahl bei "max" abändern
 ########################################
-
-execute as @e[tag=structurepos,distance=..2] at @s run schedule function game:events/randomstructureset 1t
-execute as @e[tag=structurepos,distance=..2] at @s run schedule function game:events/randomstructureclear 2t

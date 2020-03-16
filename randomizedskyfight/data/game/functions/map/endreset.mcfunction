@@ -1,9 +1,6 @@
 tp @a 0 90 0
 tellraw @a ["",{"text":"Mapreset wurde ","color":"red"},{"text":"erfolgreich","color":"green"},{"text":" durchgeführt!","color":"red"}]
 
-#setblock 0 90 4 minecraft:player_wall_head[facing=south]{Owner:{Name:"rafaelurben"}}
-#setblock 0 90 -4 minecraft:player_wall_head[facing=north]{Owner:{Name:"MinimisPinguin"}}
-
 setblock 0 89 3 minecraft:oak_sign[rotation=8]{Text1:'[{"text":"- Developer -","color":"gold"}]',Text2:'[{"text":"---------------"}]',Text3:'[{"text":"Rafael Urben","color":"green"}]',Text4:'[{"text":"","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 10"}}]'}
 setblock 0 89 -3 minecraft:oak_sign[rotation=0]{Text1:'[{"text":"- Idee -","color":"gold"}]',Text2:'[{"text":"---------------"}]',Text3:'[{"text":"MinimisPinguin","color":"green"}]',Text4:'[{"text":"","clickEvent":{"action":"run_command","value":"/trigger gamesettings set 11"}}]'}
 

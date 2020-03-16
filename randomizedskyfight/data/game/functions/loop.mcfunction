@@ -1,5 +1,24 @@
 tag @a[tag=!player,tag=!builder] add player
 
+#Ende
+execute if score #game game matches 1.. if entity @a[tag=player,team=1,scores={game=1..}] unless entity @a[tag=player,team=!1,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=2,scores={game=1..}] unless entity @a[tag=player,team=!2,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=3,scores={game=1..}] unless entity @a[tag=player,team=!3,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=4,scores={game=1..}] unless entity @a[tag=player,team=!4,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=5,scores={game=1..}] unless entity @a[tag=player,team=!5,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=6,scores={game=1..}] unless entity @a[tag=player,team=!6,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=7,scores={game=1..}] unless entity @a[tag=player,team=!7,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=8,scores={game=1..}] unless entity @a[tag=player,team=!8,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=9,scores={game=1..}] unless entity @a[tag=player,team=!9,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=10,scores={game=1..}] unless entity @a[tag=player,team=!10,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=11,scores={game=1..}] unless entity @a[tag=player,team=!11,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=12,scores={game=1..}] unless entity @a[tag=player,team=!12,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=13,scores={game=1..}] unless entity @a[tag=player,team=!13,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=14,scores={game=1..}] unless entity @a[tag=player,team=!14,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=15,scores={game=1..}] unless entity @a[tag=player,team=!15,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #game game matches 1.. if entity @a[tag=player,team=16,scores={game=1..}] unless entity @a[tag=player,team=!16,scores={game=1..}] run scoreboard players set #end game 1
+execute if score #end game matches 1 run function game:stop
+
 #Teammanagement
 execute if score #game game matches 1..300 run tag @a add teamteleport
 execute if score #game game matches 1..300 run scoreboard players add #game game 1
@@ -11,7 +30,7 @@ execute if score #game game matches 300.. run bossbar set game:nexrandomitem pla
 # execute if score #game game matches 300.. run bossbar set game:nexrandomspawn players @a
 # execute if score #game game matches 300.. run bossbar set game:nexrandomstructure players @a
 
-
+#Events
 execute if score #game game matches 300.. if score #itemtimer game matches 1.. if score #item game matches 1 run scoreboard players remove #itemtimer game 1
 execute if score #game game matches 300.. if score #itemtimer game matches 0 if score #item game matches 1 as @a[tag=player,scores={game=1..},team=!] run function game:events/randomitem
 execute if score #game game matches 300.. if score #itemtimer game matches ..0 if score #item game matches 1 run scoreboard players operation #itemtimer game = #itemevent game
@@ -37,7 +56,7 @@ execute if score #game game matches 300.. if score #spawntimer game > #lifes gam
 
 
 execute if score #game game matches 300.. if score #structuretimer game matches 1.. if score #structure game matches 1 run scoreboard players remove #structuretimer game 1
-execute if score #game game matches 300.. if score #structuretimer game matches 0 if score #structure game matches 1 as @e[tag=structurespawner,tag=active,limit=1,sort=random] run function game:events/randomstructure
+execute if score #game game matches 300.. if score #structuretimer game matches 0 if score #structure game matches 1 as @e[tag=structurespawner,tag=active,limit=1,sort=random] at @s run function game:events/randomstructure
 execute if score #game game matches 300.. if score #structuretimer game matches ..0 if score #structure game matches 1 run scoreboard players operation #structuretimer game = #structureevent game
 
 execute if score #game game matches 300.. if score #structuretimer game > #lifes game if score #structure game matches 1 run scoreboard players operation §eStructure game = #structuretimer game
@@ -45,7 +64,7 @@ execute if score #game game matches 300.. if score #structuretimer game > #lifes
 
 
 execute if score #game game matches 300.. if score #playerswitchtimer game matches 1.. if score #playerswitch game matches 1 run scoreboard players remove #playerswitchtimer game 1
-execute if score #game game matches 300.. if score #playerswitchtimer game matches 0 if score #playerswitch game matches 1 as @r run function game:events/randomplayerswitch
+execute if score #game game matches 300.. if score #playerswitchtimer game matches 0 if score #playerswitch game matches 1 as @r[tag=player,scores={game=1..}] run function game:events/randomplayerswitch
 execute if score #game game matches 300.. if score #playerswitchtimer game matches ..0 if score #playerswitch game matches 1 run scoreboard players operation #playerswitchtimer game = #playerswitchevent game
 
 execute if score #game game matches 300.. if score #playerswitchtimer game > #lifes game if score #playerswitch game matches 1 run scoreboard players operation §ePlayerswitch game = #playerswitchtimer game
@@ -55,12 +74,21 @@ execute if score #game game matches 300.. if score #playerswitchtimer game > #li
 execute if score #game game matches 1.. as @a[tag=player,team=!] run scoreboard players operation @s game = #lifes game
 execute if score #game game matches 1.. as @a[tag=player,team=!] run scoreboard players operation @s game -= @s death
 
+
+#Strukturen
+execute as @e[tag=structureclear] at @s run fill ~ ~-2 ~ ~ ~-3 ~ air
+execute as @e[tag=structureclear] run kill @s
+execute as @e[tag=structurepos] at @s run setblock ~ ~-3 ~ redstone_block
+execute as @e[tag=structurepos] run tag @s add structureclear
+execute as @e[tag=structurepos] run tag @s remove structurepos
+
+
 #Gamemode
 execute if score #game game matches 300.. run gamemode spectator @a[tag=player,team=!,gamemode=!spectator,scores={game=0}]
 execute if score #game game matches 300.. run gamemode survival @a[tag=player,team=!,gamemode=!survival,scores={game=1..}]
 execute unless score #game game matches 300.. run gamemode adventure @a[tag=player,gamemode=!adventure]
 
-#start
+#Start
 execute if score #starttimer game matches 198 as @a[tag=player] run playsound minecraft:music_disc.mellohi master @s ~ ~ ~ 1
 execute unless score #starttimer game matches 1.. run stopsound @a * minecraft:music_disc.mellohi
 execute unless score #game game matches 1.. if score #starttimer game matches 0 run function game:start
@@ -151,7 +179,6 @@ execute unless score #game game matches 1.. if score #lifes game matches 6 run s
 
 
 
-
 #Intro
 execute if score #game game matches 2 as @a[tag=player,team=!] at @s run stopsound @s
 execute if score #game game matches 2 as @a[tag=player,team=!] at @s run playsound minecraft:block.bell.use master @s ~ ~ ~ 1 0
@@ -187,27 +214,6 @@ execute if score #game game matches 300 run scoreboard objectives setdisplay lis
 execute unless score #game game matches 1.. run tag @a[tag=player] add jointeam
 execute if score #game game matches 1.. run tag @a[tag=jointeam] remove jointeam
 tag @a[tag=jointeam,tag=builder] remove jointeam
-
-#Ende
-execute if score #game game matches 1.. if entity @a[tag=player,team=1,scores={game=1..}] unless entity @a[tag=player,team=!1,scores={game=1..}] run scoreboard players set #end game 1
-execute if score #game game matches 1.. if entity @a[tag=player,team=2,scores={game=1..}] unless entity @a[tag=player,team=!2,scores={game=1..}] run scoreboard players set #end game 1
-execute if score #game game matches 1.. if entity @a[tag=player,team=3,scores={game=1..}] unless entity @a[tag=player,team=!3,scores={game=1..}] run scoreboard players set #end game 1
-execute if score #game game matches 1.. if entity @a[tag=player,team=4,scores={game=1..}] unless entity @a[tag=player,team=!4,scores={game=1..}] run scoreboard players set #end game 1
-execute if score #game game matches 1.. if entity @a[tag=player,team=5,scores={game=1..}] unless entity @a[tag=player,team=!5,scores={game=1..}] run scoreboard players set #end game 1
-execute if score #game game matches 1.. if entity @a[tag=player,team=6,scores={game=1..}] unless entity @a[tag=player,team=!6,scores={game=1..}] run scoreboard players set #end game 1
-execute if score #game game matches 1.. if entity @a[tag=player,team=7,scores={game=1..}] unless entity @a[tag=player,team=!7,scores={game=1..}] run scoreboard players set #end game 1
-execute if score #game game matches 1.. if entity @a[tag=player,team=8,scores={game=1..}] unless entity @a[tag=player,team=!8,scores={game=1..}] run scoreboard players set #end game 1
-execute if score #game game matches 1.. if entity @a[tag=player,team=9,scores={game=1..}] unless entity @a[tag=player,team=!9,scores={game=1..}] run scoreboard players set #end game 1
-execute if score #game game matches 1.. if entity @a[tag=player,team=10,scores={game=1..}] unless entity @a[tag=player,team=!10,scores={game=1..}] run scoreboard players set #end game 1
-execute if score #game game matches 1.. if entity @a[tag=player,team=11,scores={game=1..}] unless entity @a[tag=player,team=!11,scores={game=1..}] run scoreboard players set #end game 1
-execute if score #game game matches 1.. if entity @a[tag=player,team=12,scores={game=1..}] unless entity @a[tag=player,team=!12,scores={game=1..}] run scoreboard players set #end game 1
-execute if score #game game matches 1.. if entity @a[tag=player,team=13,scores={game=1..}] unless entity @a[tag=player,team=!13,scores={game=1..}] run scoreboard players set #end game 1
-execute if score #game game matches 1.. if entity @a[tag=player,team=14,scores={game=1..}] unless entity @a[tag=player,team=!14,scores={game=1..}] run scoreboard players set #end game 1
-execute if score #game game matches 1.. if entity @a[tag=player,team=15,scores={game=1..}] unless entity @a[tag=player,team=!15,scores={game=1..}] run scoreboard players set #end game 1
-execute if score #game game matches 1.. if entity @a[tag=player,team=16,scores={game=1..}] unless entity @a[tag=player,team=!16,scores={game=1..}] run scoreboard players set #end game 1
-
-execute if score #end game matches 1 run function game:stop
-
 
 
 #Reset
